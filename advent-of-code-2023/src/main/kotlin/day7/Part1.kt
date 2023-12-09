@@ -15,20 +15,8 @@ fun main() {
         Hand(it.split(" ")[0], it.split(" ")[1].toInt())
     }
 
-    /*val hands = listOf(
-        Hand("32T3K", 765),
-        Hand("T55J5", 684),
-        Hand("KK677", 28),
-        Hand("KTJJT", 220),
-        Hand("QQQJA", 483)
-    )*/
-
     val handComparator = Comparator<Hand> { hand1, hand2 -> compareHands(hand1.content, hand2.content) }
-
-    // Sort all hands by strength (weakest to strongest)
     val sortedHands = hands.sortedWith(handComparator)
-
-    // Print the sum of the product of the bid times the rank (index + 1)
     println(sortedHands.sumOf { it.bid * (sortedHands.indexOf(it) + 1) })
    }
 
